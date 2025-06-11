@@ -1,0 +1,190 @@
+Order Date,RO Number,Tag,Pay Type,Advisor,Tech,Parts,Current Status,Dealer,Elapsed Time in Mins,RO Amount,OCR Count,Custom Rec,Custom Rec Amt,Video Count
+"Jun 1, 2025, 6:39:13 PM",813663,TCVSHOP,--I,Armin Zipperle,,,No Inspection Needed,Mercedes-Benz of San Francisco,8576,,0,0,0,0
+"Jun 1, 2025, 8:12:25 PM",813673,T28125,--I,Armin Zipperle,Eyad Abualdarak,Ryan Adina,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,1445,,0,1,0,4
+"Jun 2, 2025, 8:00:56 AM",813679,TG033,-WI,Natalia Garcia,Adam Duval,,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,10387,,0,0,0,1
+"Jun 2, 2025, 8:16:15 AM",813683,TB802,-WI,Manuel Solano,Ben Dolde,Eric Abellera,Complete in Shop,Mercedes-Benz of San Francisco,11477,0,0,1,346,1
+"Jun 2, 2025, 8:53:48 AM",813692,TY471,C-I,Steve Lam,Davis Ngo,Eric Abellera,Hold - Parts On Order,Mercedes-Benz of San Francisco,196,,0,1,2520.51,1
+"Jun 2, 2025, 9:09:41 AM",813696,TG055,C-I,Natalia Garcia,Nicholas Cote,Eric Abellera,Hold - Parts On Order,Mercedes-Benz of San Francisco,12952,,1,0,0,1
+"Jun 2, 2025, 10:07:04 AM",813705,TR404,C-I,Chris Mitchell,Dencedy Guevarra,Allen Ruiz,Extended Road Test Needed,Mercedes-Benz of San Francisco,2649,,0,0,0,1
+"Jun 2, 2025, 10:22:06 AM",813709,TB808,C-I,Manuel Solano,Davis Ngo,Eric Abellera,Complete in Shop,Mercedes-Benz of San Francisco,96,3548.19,0,3,4026.98,0
+"Jun 2, 2025, 11:28:16 AM",813716,TB810,C-I,Manuel Solano,Mark Cabrera,Eric Abellera,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,10195,,0,0,0,1
+"Jun 2, 2025, 1:48:10 PM",813719,TG042,C-I,Natalia Garcia,Dencedy Guevarra,Melchor Medina,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,7176,,0,3,4809.21,2
+"Jun 2, 2025, 3:02:16 PM",813721,TP858,C-I,Andre Aton,Chris Alaras,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,12832,,0,0,0,2
+"Jun 2, 2025, 3:04:39 PM",813722,TR407,CWI,Chris Mitchell,Ben Dolde,,Complete in Shop,Mercedes-Benz of San Francisco,11368,1032.68,0,0,0,0
+"Jun 2, 2025, 4:04:19 PM",813725,TR351,C-I,Chris Mitchell,Chris Alaras,,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,3131,,0,0,0,1
+"Jun 2, 2025, 4:13:20 PM",813726,TR406,C-I,Chris Mitchell,Conrad Mendoza,Allen Ruiz,Hold - Parts On Order,Mercedes-Benz of San Francisco,3202,,0,1,1838.2,1
+"Jun 2, 2025, 5:02:12 PM",813733,TWILV,C--,Adam Shapiro,Wilver Cajanding,,No Inspection Needed,Mercedes-Benz of San Francisco,7484,,0,0,0,0
+"Jun 3, 2025, 8:03:46 AM",813741,TY3315,CWI,Raymond Jew,Eric Capangpangan,Ryan Adina,Complete in Shop,Mercedes-Benz of San Francisco,1279,2191.32,0,1,149.95,1
+"Jun 3, 2025, 8:26:22 AM",813747,TY481,-WI,Steve Lam,Thomas Decena,Eric Abellera,Complete in Shop,Mercedes-Benz of San Francisco,11690,0,0,1,346,0
+"Jun 3, 2025, 8:30:47 AM",813748,TG045,-WI,Natalia Garcia,Chris Alaras,,Extended Road Test Needed,Mercedes-Benz of San Francisco,2648,,0,0,0,1
+"Jun 3, 2025, 8:38:45 AM",813751,T28129,--I,Armin Zipperle,Eyad Abualdarak,Ryan Adina,Hold - Parts On Order,Mercedes-Benz of San Francisco,10269,,0,1,0,4
+"Jun 3, 2025, 8:50:34 AM",813753,TB812,CWI,Manuel Solano,Tommy Ly,,Complete in Shop,Mercedes-Benz of San Francisco,1429,0,0,0,0,0
+"Jun 3, 2025, 9:07:35 AM",813757,TB815,C-I,Manuel Solano,Ray Zulueta,,Complete in Shop,Mercedes-Benz of San Francisco,8638,256.66,0,0,0,0
+"Jun 3, 2025, 9:41:56 AM",813763,TW692,C-I,Andre Aton,Thomas Decena,Allen Ruiz,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,117,,1,1,346,1
+"Jun 3, 2025, 10:02:36 AM",813766,TG049,CWI,Natalia Garcia,Mark Cabrera,,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,3231,,0,1,396.5,1
+"Jun 3, 2025, 10:46:20 AM",813770,TB817,C-I,Manuel Solano,Adam Duval,,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,8618,,0,3,4209,1
+"Jun 3, 2025, 11:41:12 AM",813776,TSHOP,--I,Adam Shapiro,Carl Peters,,No Inspection Needed,Mercedes-Benz of San Francisco,8584,,0,0,0,0
+"Jun 3, 2025, 11:53:44 AM",813777,TY3319,-WI,Raymond Jew,Eric Capangpangan,,Hold - Parts On Order,Mercedes-Benz of San Francisco,10319,,0,0,0,0
+"Jun 3, 2025, 1:47:19 PM",813782,TP860,C--,Cathy Cervantes,Kevin Parma,,No Inspection Needed,Mercedes-Benz of San Francisco,7484,,0,0,0,0
+"Jun 3, 2025, 1:51:41 PM",813783,TP859,-WI,Cathy Cervantes,Felix Chan,,Mobile Service,Mercedes-Benz of San Francisco,7483,,0,0,0,0
+"Jun 3, 2025, 2:21:50 PM",813788,TG056,C-I,Natalia Garcia,Nelson Toy,Allen Ruiz,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,317,,0,4,3804.89,1
+"Jun 3, 2025, 2:30:13 PM",813789,TR410,C-I,Chris Mitchell,Wilver Cajanding,Eric Abellera,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,3248,,0,0,0,1
+"Jun 3, 2025, 4:45:50 PM",813800,TR409,C-I,Chris Mitchell,Kevin Parma,Allen Ruiz,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,7562,,0,1,346,1
+"Jun 3, 2025, 5:31:26 PM",813801,TY485,CWI,Steve Lam,Kevin Parma,Allen Ruiz,Complete in Shop,Mercedes-Benz of San Francisco,7192,,0,1,346,1
+"Jun 4, 2025, 8:06:07 AM",813807,TO643,C-I,Alessandra Elder,Joshua Santos,Allen Ruiz,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,3059,,1,1,399,1
+"Jun 4, 2025, 8:28:50 AM",813809,TY3325,-WI,Raymond Jew,Juvenal Gomez,,Hold - Parts On Order,Mercedes-Benz of San Francisco,271,,0,0,0,0
+"Jun 4, 2025, 9:49:19 AM",813822,TY491,C-I,Steve Lam,Chris Alaras,Melchor Medina,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,3106,,1,2,4672.13,0
+"Jun 4, 2025, 10:09:16 AM",813828,TY492,-WI,Steve Lam,Thomas Decena,,Complete in Shop,Mercedes-Benz of San Francisco,7032,0,0,0,0,0
+"Jun 4, 2025, 10:55:44 AM",813833,TO050,-WI,Alessandra Elder,Adam Duval,,In Diagnostics,Mercedes-Benz of San Francisco,8623,0,0,0,0,1
+"Jun 4, 2025, 11:34:08 AM",813838,T4067,C--,Oscar Rodriguez,,,No Inspection Needed,Mercedes-Benz of San Francisco,10180,,0,0,0,0
+"Jun 4, 2025, 11:47:58 AM",813840,TSV3287,--I,Armin Zipperle,Karl Haselbach,,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,7359,,0,0,0,0
+"Jun 4, 2025, 12:01:30 PM",813843,TR415X,C-I,Chris Mitchell,David Sanchez,Tv Tran,Complete in Shop,Mercedes-Benz of San Francisco,7109,3160.95,0,1,4074.28,1
+"Jun 4, 2025, 12:18:09 PM",813846,TG106,-WI,Natalia Garcia,Ben Dolde,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,7425,,0,0,0,1
+"Jun 4, 2025, 12:18:19 PM",813847,TR416,C-I,Chris Mitchell,Ray Zulueta,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,3205,,0,0,0,0
+"Jun 4, 2025, 12:28:48 PM",813848,TG107,-WI,Natalia Garcia,Wilver Cajanding,,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,3180,0,1,0,0,1
+"Jun 4, 2025, 12:31:41 PM",813849,TG057,C-I,Natalia Garcia,Adam Duval,Melchor Medina,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,1653,,0,0,0,1
+"Jun 4, 2025, 1:31:44 PM",813856,TW707,--I,Andre Aton,Tommy Ly,Eric Abellera,Complete in Shop,Mercedes-Benz of San Francisco,1309,,0,1,7025.55,0
+"Jun 4, 2025, 2:14:41 PM",813859,TY493,C-I,Steve Lam,Davis Ngo,Allen Ruiz,Hold - Parts On Order,Mercedes-Benz of San Francisco,1506,,0,3,5956.84,1
+"Jun 4, 2025, 3:28:53 PM",813863,TY3322,C-I,Raymond Jew,Juvenal Gomez,Ryan Adina,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,154,,0,3,3219.26,0
+"Jun 5, 2025, 7:47:46 AM",813867,TG111,-WI,Natalia Garcia,Adam Duval,,Extended Road Test Needed,Mercedes-Benz of San Francisco,2782,,0,0,0,1
+"Jun 5, 2025, 8:35:01 AM",813878,TY498,C-I,Steve Lam,Nelson Toy,Allen Ruiz,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,1762,,0,1,4953.77,1
+"Jun 5, 2025, 9:07:47 AM",813889,TB827,CWI,Manuel Solano,Carl Peters,Allen Ruiz,Hold - Parts On Order,Mercedes-Benz of San Francisco,1601,,0,0,0,1
+"Jun 5, 2025, 9:21:40 AM",813893,TO646,C-I,Alessandra Elder,Sunny Yu,Allen Ruiz,Complete in Shop,Mercedes-Benz of San Francisco,275,,0,3,1640.58,0
+"Jun 5, 2025, 9:23:46 AM",813895,TO647,C-I,Alessandra Elder,Sunny Yu,Allen Ruiz,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,288,,0,3,2943.64,0
+"Jun 5, 2025, 10:08:00 AM",813907,TY3332,CWI,Raymond Jew,Eric Capangpangan,Ryan Adina,Complete in Shop,Mercedes-Benz of San Francisco,1687,4511.77,0,1,346,1
+"Jun 5, 2025, 12:29:43 PM",813919,TY3335,CWI,Raymond Jew,Eric Capangpangan,Ryan Adina,Working In Shop,Mercedes-Benz of San Francisco,110,,0,2,636.29,1
+"Jun 5, 2025, 12:30:34 PM",813920,TG117,CWI,Natalia Garcia,Dencedy Guevarra,Eric Abellera,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,1827,,0,0,0,0
+"Jun 5, 2025, 12:41:21 PM",813921,TG118,C-I,Natalia Garcia,Dencedy Guevarra,Tv Tran,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,2657,,0,0,0,1
+"Jun 5, 2025, 2:04:09 PM",813925,TY3336,CWI,Raymond Jew,Binh Du,Ryan Adina,Complete in Shop,Mercedes-Benz of San Francisco,1636,0,0,1,209.64,3
+"Jun 5, 2025, 2:45:45 PM",813926,T63683,-W-,Armin Zipperle,Karl Haselbach,,No Inspection Needed,Mercedes-Benz of San Francisco,7398,,0,0,0,0
+"Jun 5, 2025, 4:26:26 PM",813938,TR353,C-I,Chris Mitchell,Davis Ngo,Allen Ruiz,Complete in Shop,Mercedes-Benz of San Francisco,1595,1377,0,3,2427.96,1
+"Jun 5, 2025, 4:31:35 PM",813940,T28139,--I,Armin Zipperle,Mohammad Alnajjar,Ryan Adina,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,3074,,0,6,0,4
+"Jun 5, 2025, 5:17:08 PM",813941,TB832,-WI,Manuel Solano,Thomas Decena,,Complete in Shop,Mercedes-Benz of San Francisco,3052,0,0,0,0,2
+"Jun 6, 2025, 7:47:13 AM",813942,TY506,C-I,Steve Lam,Chris Alaras,Eric Abellera,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,2921,1224.98,1,0,0,1
+"Jun 6, 2025, 7:47:56 AM",813943,TB833X,C-I,Manuel Solano,David Sanchez,,Complete in Shop,Mercedes-Benz of San Francisco,7435,720.78,0,0,0,1
+"Jun 6, 2025, 7:59:38 AM",813946,TB834,CWI,Manuel Solano,Conrad Mendoza,Tv Tran,Complete in Shop,Mercedes-Benz of San Francisco,164,0,0,1,346,1
+"Jun 6, 2025, 8:11:03 AM",813948,TR423,-WI,Chris Mitchell,Adam Duval,Tv Tran,Complete in Shop,Mercedes-Benz of San Francisco,1172,0,0,0,0,1
+"Jun 6, 2025, 8:28:51 AM",813951,TB835,--I,Manuel Solano,Chris Alaras,,In Diagnostics,Mercedes-Benz of San Francisco,1579,,0,1,249.95,0
+"Jun 6, 2025, 9:13:30 AM",813957,TB836,C-I,Manuel Solano,Carl Peters,Eric Abellera,Complete in Shop,Mercedes-Benz of San Francisco,367,1553.64,0,1,1553.64,1
+"Jun 6, 2025, 9:20:06 AM",813959,TY3339,CWI,Raymond Jew,Eric Capangpangan,Tv Tran,Hold - Parts On Order,Mercedes-Benz of San Francisco,102,,0,3,4818.32,1
+"Jun 6, 2025, 10:09:49 AM",813967,TO059,C-I,Alessandra Elder,Ben Dolde,Allen Ruiz,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,3035,,0,1,64.62,1
+"Jun 6, 2025, 10:24:59 AM",813969,TY3341,CWI,Raymond Jew,Eric Capangpangan,Ryan Adina,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,2815,,0,3,1708.5,2
+"Jun 6, 2025, 10:52:57 AM",813972,TW722,C-I,Andre Aton,Carl Peters,Allen Ruiz,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,113,,0,1,852.68,1
+"Jun 6, 2025, 11:01:21 AM",813974,TO060,-WI,Alessandra Elder,Dencedy Guevarra,,Complete in Shop,Mercedes-Benz of San Francisco,341,0,0,0,0,1
+"Jun 6, 2025, 11:09:53 AM",813976,TB830,C-I,Manuel Solano,Tommy Ly,Eric Abellera,Complete in Shop,Mercedes-Benz of San Francisco,189,1668.4,0,3,3534.72,1
+"Jun 6, 2025, 11:26:48 AM",813979,TB837,-WI,Manuel Solano,Sunny Yu,,In Diagnostics,Mercedes-Benz of San Francisco,237,,0,0,0,0
+"Jun 6, 2025, 2:51:47 PM",813986,TMOB4,-WI,Manuel Solano,Felix Chan,,Complete in Shop,Mercedes-Benz of San Francisco,1516,0,0,0,0,0
+"Jun 6, 2025, 3:40:20 PM",813987,T99036,--I,Cathy Cervantes,,,No Inspection Needed,Mercedes-Benz of San Francisco,7062,,0,0,0,0
+"Jun 6, 2025, 4:27:57 PM",813990,TMARKC,C--,Adam Shapiro,Mark Cabrera,,Dispatched - Not Working,Mercedes-Benz of San Francisco,7046,,0,0,0,0
+"Jun 6, 2025, 4:46:31 PM",813991,TMATT,C--,Adam Shapiro,Matt Foley,,No Inspection Needed,Mercedes-Benz of San Francisco,2824,,0,0,0,0
+"Jun 7, 2025, 9:06:44 AM",813994,TY514,C-I,Steve Lam,Kevin Parma,,Complete in Shop,Mercedes-Benz of San Francisco,5977,519.08,0,0,0,0
+"Jun 7, 2025, 9:52:46 AM",813996,TY516,C-I,Steve Lam,Felix Chan,Eric Abellera,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,2705,868.43,1,0,0,1
+"Jun 7, 2025, 1:21:28 PM",814001,TY522,-WI,Steve Lam,Felix Chan,Allen Ruiz,Mobile Service,Mercedes-Benz of San Francisco,1280,0,0,1,1004,1
+"Jun 9, 2025, 7:58:47 AM",814007,TG127,-WI,Natalia Garcia,Mykelti Allen,,Complete in Shop,Mercedes-Benz of San Francisco,1476,0,0,0,0,1
+"Jun 9, 2025, 8:00:40 AM",814008,TY525,-WI,Steve Lam,Conrad Mendoza,,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,1748,0,0,0,0,1
+"Jun 9, 2025, 8:01:18 AM",814009,TW724,C-I,Andre Aton,Dencedy Guevarra,Eric Abellera,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,210,,0,0,0,1
+"Jun 9, 2025, 8:12:57 AM",814014,TO1300,C-I,William Soo,Ronnie Phan,Tv Tran,Working In Shop,Mercedes-Benz of San Francisco,105,,0,2,1700.31,1
+"Jun 9, 2025, 8:15:15 AM",814015,TB841,CWI,Manuel Solano,Joshua Santos,Allen Ruiz,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,2785,,0,0,0,1
+"Jun 9, 2025, 8:20:59 AM",814016,T28134,--I,Armin Zipperle,Eyad Abualdarak,Tv Tran,Working In Shop,Mercedes-Benz of San Francisco,216,,0,1,0,4
+"Jun 9, 2025, 8:35:14 AM",814019,TB842,C-I,Manuel Solano,Felix Chan,,Redispatch Needed,Mercedes-Benz of San Francisco,0,,0,0,0,0
+"Jun 9, 2025, 8:40:02 AM",814020,TY526X,C-I,Steve Lam,David Sanchez,,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,2999,,0,0,0,0
+"Jun 9, 2025, 8:51:40 AM",814022,TR433,C-I,Chris Mitchell,Conrad Mendoza,Eric Abellera,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,114,,0,1,400.33,1
+"Jun 9, 2025, 8:57:11 AM",814024,TB843,CWI,Manuel Solano,Wilver Cajanding,Allen Ruiz,Complete in Shop,Mercedes-Benz of San Francisco,159,4676.18,0,2,3087.85,1
+"Jun 9, 2025, 8:58:06 AM",814025,TW727,-WI,Andre Aton,Carl Peters,,Complete in Shop,Mercedes-Benz of San Francisco,328,0,0,0,0,1
+"Jun 9, 2025, 8:59:39 AM",814026,TO1302,C-I,William Soo,Ronnie Phan,Tv Tran,Complete in Shop,Mercedes-Benz of San Francisco,2645,305,0,0,0,1
+"Jun 9, 2025, 9:15:16 AM",814030,TY3343,C-I,Raymond Jew,Juvenal Gomez,Tv Tran,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,255,,0,2,839.04,0
+"Jun 9, 2025, 9:20:35 AM",814032,TO1301,CWI,William Soo,Juvenal Gomez,,Complete in Shop,Mercedes-Benz of San Francisco,124,,0,0,0,0
+"Jun 9, 2025, 9:23:37 AM",814033,T28121,--I,Armin Zipperle,Eyad Abualdarak,Ryan Adina,Hold - Parts On Order,Mercedes-Benz of San Francisco,1760,,0,4,0,4
+"Jun 9, 2025, 9:23:56 AM",814034,TW729,-WI,Andre Aton,Dencedy Guevarra,,Dispatched - Not Working,Mercedes-Benz of San Francisco,1817,,0,0,0,0
+"Jun 9, 2025, 9:25:52 AM",814035,TY3344,CWI,Raymond Jew,Binh Du,Tv Tran,Complete in Shop,Mercedes-Benz of San Francisco,1506,0,0,0,0,2
+"Jun 9, 2025, 9:26:22 AM",814036,T28136,--I,Armin Zipperle,Mohammad Alnajjar,Ryan Adina,Hold - Parts On Order,Mercedes-Benz of San Francisco,1719,,0,1,0,2
+"Jun 9, 2025, 9:34:26 AM",814038,TO064,CWI,Alessandra Elder,Carl Peters,,Complete in Shop,Mercedes-Benz of San Francisco,1646,,0,0,0,1
+"Jun 9, 2025, 9:46:34 AM",814042,TR435,C-I,Chris Mitchell,Sunny Yu,,In Diagnostics,Mercedes-Benz of San Francisco,168,,0,0,0,0
+"Jun 9, 2025, 9:52:17 AM",814043,TO065,C-I,Alessandra Elder,David Sanchez,Ryan Adina,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,1544,2330.04,0,2,839.32,1
+"Jun 9, 2025, 10:30:59 AM",814050,TY531,CWI,Steve Lam,Kirsten Upchurch,,Available - Not Dispatched,Mercedes-Benz of San Francisco,215,,0,0,0,1
+"Jun 9, 2025, 10:47:34 AM",814055,TY535,C-I,Steve Lam,Ben Dolde,,Hold - Parts On Order,Mercedes-Benz of San Francisco,1606,,0,0,0,0
+"Jun 9, 2025, 10:56:28 AM",814058,TY534,-WI,Steve Lam,Thomas Decena,,Complete in Shop,Mercedes-Benz of San Francisco,2652,0,0,0,0,1
+"Jun 9, 2025, 11:10:59 AM",814059,TO1304,CWI,William Soo,Karl Haselbach,,Dispatched - Not Working,Mercedes-Benz of San Francisco,3045,,0,0,0,0
+"Jun 9, 2025, 11:21:10 AM",814063,TR437,C-I,Chris Mitchell,Alan Guillen,,Dispatched - Not Working,Mercedes-Benz of San Francisco,244,,0,0,0,0
+"Jun 9, 2025, 11:31:35 AM",814064,TB824,C-I,Manuel Solano,Thomas Decena,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,1615,,0,0,0,0
+"Jun 9, 2025, 11:34:20 AM",814065,TW726,C-I,Andre Aton,Wilver Cajanding,Allen Ruiz,Complete in Shop,Mercedes-Benz of San Francisco,1373,423.49,0,0,0,1
+"Jun 9, 2025, 11:41:58 AM",814066,TB847,CWI,Manuel Solano,Adam Duval,,Complete in Shop,Mercedes-Benz of San Francisco,313,0,0,0,0,1
+"Jun 9, 2025, 11:42:15 AM",814067,TOKEY,CWI,Alessandra Elder,,,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,196,1250,0,0,0,0
+"Jun 9, 2025, 12:49:42 PM",814069,TAZ,C-I,Armin Zipperle,Eyad Abualdarak,,Complete in Shop,Mercedes-Benz of San Francisco,1656,,0,0,0,3
+"Jun 9, 2025, 1:25:34 PM",814071,TB080,CWI,Armin Zipperle,Mohammad Alnajjar,Ryan Adina,Working In Shop,Mercedes-Benz of San Francisco,34,,0,3,3481.59,2
+"Jun 9, 2025, 1:30:32 PM",814072,TY537,-WI,Steve Lam,Wilver Cajanding,,Complete in Shop,Mercedes-Benz of San Francisco,1232,0,0,0,0,1
+"Jun 9, 2025, 1:35:05 PM",814073,TW734,C-I,Andre Aton,Conrad Mendoza,Melchor Medina,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,1461,,0,1,1593.91,1
+"Jun 9, 2025, 1:35:41 PM",814074,TG134,-WI,Natalia Garcia,Carl Peters,Allen Ruiz,Complete in Shop,Mercedes-Benz of San Francisco,1346,0,0,1,346,1
+"Jun 9, 2025, 1:49:21 PM",814076,TY523X,CWI,Steve Lam,David Sanchez,,Complete in Shop,Mercedes-Benz of San Francisco,1736,461.29,0,0,0,0
+"Jun 9, 2025, 2:15:46 PM",814077,TG135,C-I,Natalia Garcia,Conrad Mendoza,Eric Abellera,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,313,,0,2,2489.48,1
+"Jun 9, 2025, 2:37:15 PM",814083,TR432X,C-I,Chris Mitchell,Mykelti Allen,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,1294,,0,0,0,1
+"Jun 9, 2025, 2:43:13 PM",814084,T28124,-WI,Armin Zipperle,Mohammad Alnajjar,Ryan Adina,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,1296,,0,3,0,4
+"Jun 9, 2025, 3:20:44 PM",814086,TY3345,CWI,Raymond Jew,Juvenal Gomez,,Complete in Shop,Mercedes-Benz of San Francisco,1304,0,0,0,0,0
+"Jun 9, 2025, 4:45:22 PM",814089,TR354X,C-I,Chris Mitchell,Mykelti Allen,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,324,506.34,0,0,0,1
+"Jun 10, 2025, 7:58:10 AM",814094,TG137,CWI,Oscar Rodriguez,Conrad Mendoza,Eric Abellera,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,107,,0,1,346,1
+"Jun 10, 2025, 8:09:18 AM",814096,T28140,--I,Armin Zipperle,Mohammad Alnajjar,Ryan Adina,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,1607,,0,2,0,4
+"Jun 10, 2025, 8:22:12 AM",814100,TB848,-WI,Manuel Solano,Ben Dolde,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,1211,,0,0,0,0
+"Jun 10, 2025, 8:28:17 AM",814102,TO1305,CWI,William Soo,Ronnie Phan,Ryan Adina,Complete in Shop,Mercedes-Benz of San Francisco,1455,0,0,1,516.51,1
+"Jun 10, 2025, 8:32:24 AM",814103,TR441,C-I,Chris Mitchell,Davis Ngo,Eric Abellera,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,384,,0,3,3573.47,1
+"Jun 10, 2025, 8:55:15 AM",814106,TY3349,CWI,Raymond Jew,Ronnie Phan,,Working In Shop,Mercedes-Benz of San Francisco,1275,,0,0,0,2
+"Jun 10, 2025, 9:17:25 AM",814109,TY539,C-I,Steve Lam,Davis Ngo,Allen Ruiz,Working In Shop,Mercedes-Benz of San Francisco,216,,0,2,346,1
+"Jun 10, 2025, 9:41:10 AM",814114,TY541,-WI,Steve Lam,Conrad Mendoza,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,1397,,0,0,0,0
+"Jun 10, 2025, 9:49:44 AM",814117,TB852,-WI,Manuel Solano,Carl Peters,,Complete in Shop,Mercedes-Benz of San Francisco,17,,0,0,0,1
+"Jun 10, 2025, 9:53:43 AM",814118,TY543,C-I,Steve Lam,Alan Guillen,,Dispatched - Not Working,Mercedes-Benz of San Francisco,19,,0,0,0,0
+"Jun 10, 2025, 10:10:57 AM",814120,T0KEY,C--,Alessandra Elder,,,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,196,1274.87,0,0,0,0
+"Jun 10, 2025, 10:16:54 AM",814123,TW742,C-I,Andre Aton,Simon Chow,Allen Ruiz,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,27,,0,1,305,1
+"Jun 10, 2025, 10:20:54 AM",814124,TR000,C-I,Leticia Hardy,Ray Zulueta,,Dispatched - Not Working,Mercedes-Benz of San Francisco,329,1503.29,0,0,0,0
+"Jun 10, 2025, 10:39:51 AM",814126,TP864,-WI,Cathy Cervantes,Felix Chan,,Mobile Service,Mercedes-Benz of San Francisco,17,,0,0,0,0
+"Jun 10, 2025, 10:47:39 AM",814127,TY546,-WI,Steve Lam,Adam Duval,,In Diagnostics,Mercedes-Benz of San Francisco,330,,0,0,0,1
+"Jun 10, 2025, 10:54:11 AM",814129,TG143,CWI,Natalia Garcia,Ben Dolde,,Complete in Shop,Mercedes-Benz of San Francisco,1269,1737.96,0,0,0,0
+"Jun 10, 2025, 11:05:52 AM",814132,TP865,-WI,Cathy Cervantes,Felix Chan,,Mobile Service,Mercedes-Benz of San Francisco,17,,0,0,0,0
+"Jun 10, 2025, 11:06:59 AM",814133,TY3350,CWI,Raymond Jew,Binh Du,Ryan Adina,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,225,,0,3,3520.28,2
+"Jun 10, 2025, 11:09:37 AM",814134,TW746,--I,Andre Aton,Carl Peters,,Dispatched - Not Working,Mercedes-Benz of San Francisco,1603,,0,0,0,0
+"Jun 10, 2025, 11:17:34 AM",814135,TB855,C-I,Manuel Solano,Wilver Cajanding,Allen Ruiz,Hold - Parts On Order,Mercedes-Benz of San Francisco,15,,1,0,0,1
+"Jun 10, 2025, 11:21:40 AM",814136,T28137,--I,Armin Zipperle,Eyad Abualdarak,Tv Tran,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,295,,0,1,0,4
+"Jun 10, 2025, 11:27:53 AM",814137,T28138,--I,Armin Zipperle,Mohammad Alnajjar,Tv Tran,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,151,,0,2,0,2
+"Jun 10, 2025, 11:44:58 AM",814139,TO1306,C-I,William Soo,Ronnie Phan,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,79,,0,0,0,1
+"Jun 10, 2025, 12:11:38 PM",814141,TY3351,C-I,Raymond Jew,Ronnie Phan,Ryan Adina,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,69,,0,2,4363.65,1
+"Jun 10, 2025, 12:26:59 PM",814143,TP863,CWI,Oscar Rodriguez,John Pamaran,,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,106,,0,0,0,0
+"Jun 10, 2025, 12:36:06 PM",814144,TY3352,C-I,Raymond Jew,Karl Haselbach,,Complete in Shop,Mercedes-Benz of San Francisco,1401,305,0,0,0,0
+"Jun 10, 2025, 12:37:02 PM",814145,TY544,C-I,Steve Lam,Davis Ngo,Eric Abellera,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,1459,,0,2,3281.18,0
+"Jun 10, 2025, 12:55:58 PM",814146,TP866,CW-,Cathy Cervantes,Felix Chan,,Dispatched - Not Working,Mercedes-Benz of San Francisco,1497,,0,0,0,0
+"Jun 10, 2025, 1:28:32 PM",814148,TW745,C-I,Andre Aton,Davis Ngo,Tv Tran,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,1285,,0,2,3011.38,0
+"Jun 10, 2025, 1:53:39 PM",814149,T28151,--I,Armin Zipperle,Mohammad Alnajjar,Tv Tran,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,1317,,0,1,0,2
+"Jun 10, 2025, 1:56:11 PM",814150,TY548,-WI,Steve Lam,Dencedy Guevarra,,Complete in Shop,Mercedes-Benz of San Francisco,394,,0,0,0,1
+"Jun 10, 2025, 2:23:27 PM",814152,T28144,--I,Armin Zipperle,Eyad Abualdarak,Ryan Adina,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,261,,0,2,0,5
+"Jun 10, 2025, 2:49:50 PM",814153,TR445,-WI,Chris Mitchell,Mykelti Allen,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,159,,0,0,0,1
+"Jun 10, 2025, 3:11:35 PM",814154,TO1307,C-I,William Soo,Binh Du,Tv Tran,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,68,,0,1,350,2
+"Jun 10, 2025, 3:21:29 PM",814155,TO1308,C-I,William Soo,Juvenal Gomez,,Working In Shop,Mercedes-Benz of San Francisco,16,,0,1,152.5,0
+"Jun 10, 2025, 4:24:27 PM",814157,T28148,--I,Armin Zipperle,Mohammad Alnajjar,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,1214,,0,1,0,2
+"Jun 10, 2025, 4:27:41 PM",814158,T25149,--I,Armin Zipperle,Eyad Abualdarak,Ryan Adina,Hold - Parts On Order,Mercedes-Benz of San Francisco,156,,0,0,0,5
+"Jun 11, 2025, 7:43:44 AM",814162,TY550X,-WI,Steve Lam,David Sanchez,Ryan Adina,Complete in Shop,Mercedes-Benz of San Francisco,46,,0,0,0,0
+"Jun 11, 2025, 7:46:23 AM",814163,TY3353,CWI,Raymond Jew,Eric Capangpangan,,Complete in Shop,Mercedes-Benz of San Francisco,119,,0,1,150,1
+"Jun 11, 2025, 7:53:12 AM",814164,TG144,C-I,Natalia Garcia,Kevin Parma,,Dispatched - Not Working,Mercedes-Benz of San Francisco,350,,0,0,0,0
+"Jun 11, 2025, 8:06:30 AM",814166,TW747,-WI,Andre Aton,Wilver Cajanding,,Dispatched - Not Working,Mercedes-Benz of San Francisco,209,,0,0,0,0
+"Jun 11, 2025, 8:07:11 AM",814167,TR447,CWI,Chris Mitchell,Conrad Mendoza,,Dispatched - Not Working,Mercedes-Benz of San Francisco,233,,0,0,0,0
+"Jun 11, 2025, 8:15:05 AM",814168,TY3354,-WI,Raymond Jew,Binh Du,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,5,,0,0,0,0
+"Jun 11, 2025, 8:18:42 AM",814169,TY552X,-WI,Steve Lam,John Pamaran,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,172,,0,0,0,2
+"Jun 11, 2025, 8:34:19 AM",814172,T28146,--I,Armin Zipperle,Mohammad Alnajjar,Ryan Adina,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,5,,0,4,0,3
+"Jun 11, 2025, 8:35:52 AM",814173,TY553X,C-I,Steve Lam,,,Ready for Technician - Parts Here,Mercedes-Benz of San Francisco,108,,0,0,0,0
+"Jun 11, 2025, 8:44:29 AM",814174,T28152,-WI,Armin Zipperle,Eyad Abualdarak,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,276,,0,0,0,1
+"Jun 11, 2025, 8:45:10 AM",814175,TW748,C-I,Andre Aton,Ray Zulueta,,Complete in Shop,Mercedes-Benz of San Francisco,21,,0,0,0,2
+"Jun 11, 2025, 8:59:26 AM",814176,TW749,CWI,Andre Aton,Tommy Ly,Eric Abellera,Complete in Shop,Mercedes-Benz of San Francisco,31,,0,1,1027.25,1
+"Jun 11, 2025, 9:05:58 AM",814177,TY555,CWI,Steve Lam,Wilver Cajanding,,Dispatched - Not Working,Mercedes-Benz of San Francisco,233,,0,0,0,0
+"Jun 11, 2025, 9:06:44 AM",814178,TG146,CWI,Natalia Garcia,Tommy Ly,,Parts Availability Needed,Mercedes-Benz of San Francisco,8,,0,3,1433.5,1
+"Jun 11, 2025, 9:17:47 AM",814180,TB858,--I,Manuel Solano,Carl Peters,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,17,,0,0,0,1
+"Jun 11, 2025, 9:39:09 AM",814183,TY558X,C-I,Steve Lam,David Sanchez,,Dispatched - Not Working,Mercedes-Benz of San Francisco,254,,0,0,0,0
+"Jun 11, 2025, 9:46:35 AM",814184,TB859X,CWI,Manuel Solano,Eyad Abualdarak,,Dispatched - Not Working,Mercedes-Benz of San Francisco,19,,0,0,0,0
+"Jun 11, 2025, 9:51:47 AM",814186,TP868,CWI,Oscar Rodriguez,Thomas Decena,,Working In Shop,Mercedes-Benz of San Francisco,156,,0,0,0,1
+"Jun 11, 2025, 9:54:32 AM",814187,TW750,C-I,Andre Aton,Dencedy Guevarra,Allen Ruiz,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,100,,0,3,651,1
+"Jun 11, 2025, 9:55:47 AM",814188,TG148,-WI,Natalia Garcia,Mykelti Allen,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,36,,0,0,0,1
+"Jun 11, 2025, 10:12:09 AM",814189,T28154,--I,Armin Zipperle,Eyad Abualdarak,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,44,,0,0,0,0
+"Jun 11, 2025, 10:17:41 AM",814190,TY554,-WI,Steve Lam,Alan Guillen,,Dispatched - Not Working,Mercedes-Benz of San Francisco,19,,0,0,0,0
+"Jun 11, 2025, 10:29:24 AM",814193,TY559X,C-I,Steve Lam,John Pamaran,Allen Ruiz,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,117,,0,0,0,2
+"Jun 11, 2025, 10:30:38 AM",814194,TB860,C-I,Manuel Solano,Ben Dolde,,Dispatched - Not Working,Mercedes-Benz of San Francisco,14,,0,0,0,0
+"Jun 11, 2025, 10:48:32 AM",814195,TY560X,-WI,Steve Lam,Kirsten Upchurch,Tv Tran,Hold - Pending Advisor Authorization,Mercedes-Benz of San Francisco,66,,0,2,651,1
+"Jun 11, 2025, 10:55:19 AM",814196,TY561X,-WI,Steve Lam,Kirsten Upchurch,,Parts Requested - Pull,Mercedes-Benz of San Francisco,12,,0,0,0,0
+"Jun 11, 2025, 11:04:08 AM",814197,TW753,-WI,Andre Aton,Ray Zulueta,,"Working - MPI & Initial Diag.    ",Mercedes-Benz of San Francisco,92,,0,0,0,2
+"Jun 11, 2025, 11:05:53 AM",814198,TR451,C-I,Chris Mitchell,David Sanchez,,Complete in Shop,Mercedes-Benz of San Francisco,58,480.85,0,0,0,0
+"Jun 11, 2025, 11:21:52 AM",814199,TW754,C-I,Andre Aton,Ben Dolde,Allen Ruiz,Complete in Shop,Mercedes-Benz of San Francisco,24,,0,1,346,1
+"Jun 11, 2025, 11:46:43 AM",814201,TW755,CWI,Andre Aton,Dencedy Guevarra,,Complete in Shop,Mercedes-Benz of San Francisco,22,,0,0,0,1
