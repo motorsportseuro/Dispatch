@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercedes-Benz Service Technician Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        .file-drop-zone {
+            border: 2px dashed #9ca3af;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .file-drop-zone.drag-over {
+            background-color: #e0e7ff;
+            border-color: #4f46e5;
+        }
+        .file-drop-zone.file-loaded {
+            background-color: #d1fae5;
+            border-color: #10b981;
+        }
+        .tag-icon {
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+        }
+        .on-hold-parts {
+            background-color: #e5e7eb !important; /* Lighter gray background */
+            opacity: 0.7;
+            border-color: #9ca3af !important;
+        }
+        .priority-job {
+            outline: 3px solid #facc15; /* Yellow-400 */
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useCallback, useMemo } = React;
+
+        // --- Helper Functions ---
+        const normalizeKey = (key) => {
+            if (!key) return '';
+            return String(key).trim().replace(/[^a-z0-9]/gi, '').toLowerCase();
+        }
+
+        const parseCsvText = (csvText) => {
+            if (!csvText) return [];
+            const lines = csvText.trim().split('\n');
+            if (lines.length < 2) return [];
+
+            const header = lines[0].split(',').map(normalizeKey);
+            const dataLines = lines.slice(1);
+
+            return dataLines.map(line => {
+                const values = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                return header.reduce((obj, nextKey, index) => {
+                    obj[nextKey] = (values[index] || '').trim().replace(/"/g, '');
+                    return obj;
+                }, {});
+            });
+        };
+        
+        const getStatusColor = (status) => {
+            const s = (status || '').toLowerCase();
+            if (s.includes('working') || s.includes('diag')) return 'border-blue-500';
+            if (s.includes('hold - parts on order') || s.includes('extended road test needed')) return 'border-gray-400';
+            if (s.includes('hold') || s.includes('pending')) return 'border-orange-500';
+            if (s.includes('complete') || s.includes('ready for')) return 'border-green-500';
+            if (s.includes('road test')) return 'border-indigo-500';
+            if (s.includes('dispatched - not working')) return 'border-yellow-500';
+            return 'border-gray-400';
+        };
+        
+        const getTagColor = (tagString) => {
+            if (!tagString || tagString.length < 2) return 'bg-gray-400';
+            const secondChar = tagString[1].toUpperCase();
+            switch (secondChar) {
+                case 'G': return 'bg-green-500';
+                case 'O': return 'bg-orange-500';
+                case 'R': return 'bg-red-500';
+                case 'B': return 'bg-blue-500';
+                case 'Y': return 'bg-yellow-500 text-black';
+                case 'P': return 'bg-purple-500';
+                case 'W': return 'bg-gray-200 text-black';
+                default: return 'bg-gray-400';
+            }
+        };
+
+        const findValue = (row, keyAliases) => {
+            if (!row) return undefined;
+            for (const key of keyAliases) {
+                if (row[key] !== undefined) {
+                    return row[key];
+                }
+            }
+            return undefined;
+        };
+
+        const createLocalSummary = (text) => {
+            if (!text || typeof text !== 'string') return '';
+            const words = text.split(' ');
+            if (words.length <= 8) return text;
+            return words.slice(0, 8).join(' ') + '...';
+        }
+
+        // --- Components ---
+        const FileUploader = ({ title, onFileLoad, iconClass, accept }) => {
+            const [fileName, setFileName] = useState('');
+
+            const handleFileChange = (e) => {
+                const files = e.target.files;
+                if (files.length) {
+                    onFileLoad(files[0]);
+                    setFileName(files[0].name);
+                }
+            };
+            
+            return (
+                <div className="w-full">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">{title}</label>
+                    <div 
+                        className={`file-drop-zone ${fileName ? 'file-loaded' : ''}`}
+                        onClick={() => document.getElementById(title.replace(/\s+/g, '')).click()}
+                    >
+                        <input type="file" id={title.replace(/\s+/g, '')} accept={accept} className="hidden" onChange={handleFileChange} />
+                        <i className={`${iconClass} text-4xl ${fileName ? 'text-green-600' : 'text-gray-400'} mb-2`}></i>
+                        {fileName ? (
+                           <p className="text-sm font-semibold text-green-800">{fileName} Loaded</p>
+                        ) : (
+                           <p className="text-sm text-gray-500">Click to upload</p>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+        
+        const TagDisplay = ({ tag, isPriority }) => {
+            if (!tag) return null;
+            const isExpress = String(tag).toUpperCase().endsWith('X');
+            const tagColor = getTagColor(tag);
+            return (
+                 <div className="relative flex flex-col items-center ml-2">
+                    {isExpress && <span className="text-[10px] font-bold text-red-600 -mb-1">EXPRESS</span>}
+                    <span className={`tag-icon ${tagColor}`}>{tag}</span>
+                    {isPriority && <div className="absolute -top-3.5 -right-3 text-yellow-400" title="Priority"><i className="fas fa-exclamation-triangle"></i></div>}
+                </div>
+            );
+        }
+        
+        const JobCard = ({ job, onTogglePriority, isPriority, onHide, queueBorderColor }) => {
+            if (!job) return null;
+
+            const isPartsHold = (job.status || '').toLowerCase().includes('hold - parts on order');
+            const isRoadTest = (job.status || '').toLowerCase().includes('extended road test needed');
+            const statusColor = getStatusColor(job.status);
+            const daysOpen = job.daysOpen || 0;
+            const soldHours = job.soldHours ? parseFloat(job.soldHours) : 0;
+            
+            const cardClasses = `rounded-lg shadow-md p-4 mb-4 border-l-8 transition-all relative ${
+                isPartsHold || isRoadTest ? 'on-hold-parts' : `bg-white ${queueBorderColor || statusColor}`
+            } ${isPriority ? 'priority-job' : ''}`;
+            
+            return (
+                 <div className={cardClasses}>
+                    {onTogglePriority && (
+                        <button onClick={() => onTogglePriority(job.roNumber)} className="absolute bottom-2 right-2 text-gray-400 hover:text-yellow-400 transition-colors" title="Toggle Priority">
+                            <i className={`fas fa-star ${isPriority ? 'text-yellow-400' : ''}`}></i>
+                        </button>
+                    )}
+                     {onHide && <button onClick={() => onHide(job.roNumber)} className="absolute top-0 right-0 p-2 text-gray-400 hover:text-red-600 transition-colors transform translate-x-1/2 -translate-y-1/2" title="Hide this RO">
+                        <i className="fas fa-times-circle bg-white rounded-full"></i>
+                    </button>}
+                    
+                    <div className="flex justify-between items-start">
+                       <div className="flex items-center">
+                         <span className="font-bold text-lg text-gray-900">RO# {job.roNumber}</span>
+                         <TagDisplay tag={job.tag} isPriority={isPriority} />
+                       </div>
+                        <div className="flex items-center space-x-4">
+                           <div className="text-right">
+                             {soldHours > 0 && (
+                                <>
+                                    <div className="font-bold text-xl text-green-600">{soldHours.toFixed(1)}</div>
+                                    <div className="text-xs text-gray-500">Sold Hrs</div>
+                                </>
+                            )}
+                           </div>
+                            <div className="text-right">
+                                <div className="font-bold text-xl text-blue-600">{daysOpen}</div>
+                                <div className="text-xs text-gray-500">Days Open</div>
+                            </div>
+                        </div>
+                    </div>
+                     <div className="mt-3">
+                        <p className="font-semibold text-sm text-gray-700">{job.customerName || 'N/A from SDL'}</p>
+                        <p className="text-xs text-gray-500">{job.vehicle || 'N/A from SDL'}</p>
+                    </div>
+                    {job.serviceRequest && (
+                         <div className="mt-3 pt-3 border-t border-gray-200">
+                            <p className="text-xs text-gray-500">Service Request:</p>
+                            <p className="font-medium text-xs italic" title={job.originalServiceRequest}>{job.serviceRequest}</p>
+                        </div>
+                    )}
+                     <div className="mt-3 pt-3 border-t border-gray-200">
+                        <p className="text-xs text-gray-500">Status:</p>
+                        <p className="font-medium text-sm">{job.status}</p>
+                    </div>
+                    <div className="mt-2">
+                         <p className="text-xs text-gray-500">Advisor: <span className="font-medium text-gray-700">{job.advisor}</span></p>
+                    </div>
+                </div>
+            );
+        };
+        
+        const QueueSection = ({ title, jobs, onHide, onTogglePriority, priorityRos, bgColor, textColor, totalHours, borderColor, hiddenCount, isShowingHidden, onToggleShowHidden }) => {
+            const [isExpanded, setIsExpanded] = useState(false);
+
+            if (jobs.length === 0 && hiddenCount === 0) return null;
+            
+            const sortedJobs = [...jobs].sort((a,b) => {
+                const aIsPriority = priorityRos.has(a.roNumber);
+                const bIsPriority = priorityRos.has(b.roNumber);
+                if (aIsPriority && !bIsPriority) return -1;
+                if (!aIsPriority && bIsPriority) return 1;
+                return 0;
+            });
+
+            return (
+                <div className="mx-4 my-4 bg-white rounded-xl shadow-lg">
+                    <div 
+                        className={`w-full p-4 flex justify-between items-center ${bgColor} rounded-t-xl cursor-pointer`}
+                        onClick={() => setIsExpanded(!isExpanded)}
+                    >
+                        <div className="flex items-center space-x-3">
+                           <h2 className={`text-lg font-bold ${textColor}`}>{title}</h2>
+                           <span className="bg-gray-500 text-white text-xs font-bold px-2 py-1 rounded-full">{jobs.length}</span>
+                            {totalHours > 0 && (
+                                <span className="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                    {totalHours.toFixed(1)} hrs
+                                </span>
+                            )}
+                            {onToggleShowHidden && hiddenCount > 0 && (
+                                <button
+                                    onClick={(e) => { e.stopPropagation(); onToggleShowHidden(); }}
+                                    className="ml-4 text-xs bg-gray-500 text-white px-2 py-1 rounded-full hover:bg-gray-600"
+                                >
+                                    {isShowingHidden ? 'Hide Hidden' : `Show ${hiddenCount} Hidden`}
+                                </button>
+                            )}
+                        </div>
+                        <i className={`fas fa-chevron-down transition-transform ${textColor} ${isExpanded ? 'rotate-180' : ''}`}></i>
+                    </div>
+                    {isExpanded && (
+                        <div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                            {sortedJobs.map(job => (
+                                <JobCard 
+                                    key={job.roNumber} 
+                                    job={job} 
+                                    onHide={onHide} 
+                                    onTogglePriority={onTogglePriority}
+                                    isPriority={priorityRos.has(job.roNumber)}
+                                    queueBorderColor={borderColor}
+                                />
+                            ))}
+                        </div>
+                    )}
+                </div>
+            )
+        }
+        
+        const TechnicianColumn = ({ techName, jobs, totalHours, priorityRos, onTogglePriority }) => {
+             const sortedJobs = [...jobs].sort((a,b) => {
+                const aIsPriority = priorityRos.has(a.roNumber);
+                const bIsPriority = priorityRos.has(b.roNumber);
+                if (aIsPriority && !bIsPriority) return -1;
+                if (!aIsPriority && bIsPriority) return 1;
+                return (b.daysOpen || 0) - (a.daysOpen || 0);
+            });
+
+            return (
+                <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2">
+                    <div className="bg-white rounded-xl shadow-lg h-full flex flex-col">
+                        <div className="bg-gray-800 text-white p-4 rounded-t-xl flex justify-between items-center w-full text-left">
+                            <h3 className="font-bold text-lg">{techName}</h3>
+                             <div className="flex items-center space-x-2">
+                                {totalHours > 0 && (
+                                    <span className="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                        {totalHours.toFixed(1)} hrs
+                                    </span>
+                                )}
+                                <span className="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                    {jobs.length}
+                                </span>
+                            </div>
+                        </div>
+                        <div className="p-4 bg-gray-100 flex-grow overflow-y-auto" style={{maxHeight: 'calc(100vh - 300px)'}}>
+                           {sortedJobs.length > 0 ? sortedJobs.map((job, index) => (
+                                <JobCard 
+                                    key={`${job.roNumber}-${index}`} 
+                                    job={job}
+                                    onTogglePriority={onTogglePriority}
+                                    isPriority={priorityRos.has(job.roNumber)}
+                                />
+                           )) : (
+                                <div className="text-center text-gray-500 py-10">
+                                    <i className="fas fa-check-circle text-3xl mb-2"></i>
+                                    <p>No active jobs.</p>
+                                </div>
+                           )}
+                        </div>
+                    </div>
+                </div>
+            )
+        };
+        
+        const TEAMS = {
+            DIAGNOSTIC: ['Carl Peters', 'Adam Duval', 'Sunny Yu', 'Chris Alaras'],
+            PREMIER_EXPRESS: ['David Sanchez', 'Dhebbie Refugio', 'Kirsten Upchurch'],
+            VANS: ['Binh Du', 'Karl Haselbach', 'Eric Capangpangan', 'Eyad Abualdarak', 'Juvenal Gomez', 'Kirsten Upchurch', 'Mohammad Alnajjar', 'Ronnie Phan'],
+        };
+
+        const App = () => {
+            const [myKaarmaData, setMyKaarmaData] = useState(() => JSON.parse(localStorage.getItem('mbDashboard_myKaarmaData')) || []);
+            const [sdlData, setSdlData] = useState(() => JSON.parse(localStorage.getItem('mbDashboard_sdlData')) || []);
+            const [lastUpdated, setLastUpdated] = useState(() => localStorage.getItem('mbDashboard_lastUpdated') || null);
+            const [isUploaderVisible, setIsUploaderVisible] = useState(true);
+            const [isFilterVisible, setIsFilterVisible] = useState(false);
+            const [teamFilter, setTeamFilter] = useState(() => localStorage.getItem('mbDashboard_teamFilter') || 'All');
+            const [statusFilter, setStatusFilter] = useState(() => localStorage.getItem('mbDashboard_statusFilter') || 'All');
+            const [techSortOrder, setTechSortOrder] = useState(() => localStorage.getItem('mbDashboard_techSortOrder') || 'default');
+            const [hiddenUnassigned, setHiddenUnassigned] = useState(() => new Set(JSON.parse(localStorage.getItem('mbDashboard_hiddenUnassigned')) || []));
+            const [priorityRos, setPriorityRos] = useState(() => new Set(JSON.parse(localStorage.getItem('mbDashboard_priorityRos')) || []));
+            const [showHiddenUnassigned, setShowHiddenUnassigned] = useState(false);
+
+            useEffect(() => {
+                localStorage.setItem('mbDashboard_myKaarmaData', JSON.stringify(myKaarmaData));
+                localStorage.setItem('mbDashboard_sdlData', JSON.stringify(sdlData));
+                localStorage.setItem('mbDashboard_hiddenUnassigned', JSON.stringify(Array.from(hiddenUnassigned)));
+                localStorage.setItem('mbDashboard_priorityRos', JSON.stringify(Array.from(priorityRos)));
+                localStorage.setItem('mbDashboard_teamFilter', teamFilter);
+                localStorage.setItem('mbDashboard_statusFilter', statusFilter);
+                localStorage.setItem('mbDashboard_techSortOrder', techSortOrder);
+                if(lastUpdated) localStorage.setItem('mbDashboard_lastUpdated', lastUpdated);
+            }, [myKaarmaData, sdlData, hiddenUnassigned, priorityRos, teamFilter, statusFilter, techSortOrder, lastUpdated]);
+
+
+            const togglePriority = (roNumber) => {
+                setPriorityRos(prev => {
+                    const newSet = new Set(prev);
+                    if (newSet.has(roNumber)) newSet.delete(roNumber);
+                    else newSet.add(roNumber);
+                    return newSet;
+                });
+            };
+
+            const hideUnassignedRo = (roNumber) => {
+                setHiddenUnassigned(prev => new Set(prev).add(roNumber));
+            };
+
+            const handleMyKaarmaLoad = (file) => {
+                const reader = new FileReader();
+                reader.onload = (e) => { setMyKaarmaData(parseCsvText(e.target.result)); };
+                reader.readAsText(file);
+                setLastUpdated(new Date().toLocaleTimeString());
+            };
+            
+            const handleSdlLoad = (file) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const workbook = XLSX.read(e.target.result, { type: 'array' });
+                    const sheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[sheetName];
+                    const json = XLSX.utils.sheet_to_json(worksheet, { defval: "" });
+                    const normalizedJson = json.map(row => 
+                        Object.keys(row).reduce((acc, key) => { acc[normalizeKey(key)] = row[key]; return acc; }, {})
+                    );
+                    setSdlData(normalizedJson);
+                    setHiddenUnassigned(new Set());
+                };
+                reader.readAsArrayBuffer(file);
+                setLastUpdated(new Date().toLocaleTimeString());
+            };
+            
+            const processedData = useMemo(() => {
+                 if (sdlData.length === 0 && myKaarmaData.length === 0) return { jobsByTech: {}, totalsByTech: {}, unassignedJobs: [], needsRedispatchJobs: [], roadTestJobs: [], globalRoCount: 0, globalTotalSoldHours: 0, hiddenUnassignedCount: 0 };
+
+                const sdlKeyAliases = { ro: ['ronum', 'repairordernum', 'ro'], customer: ['customername', 'customer', 'custname'], vehicle: ['vehicle', 'model', 'vehicledescription'], days: ['days', 'daysopen', 'age', 'i'], description: ['k', 'servicerequest', 'description'], soldhours: ['l', 'soldhours', 'billedhours', 'hours', 'soldhrs'], statusCodeDesc: ['statuscodedesc'], tag: ['tag', 'c'] };
+                const mkKeyAliases = { ro: ['ronumber', 'ro'], tech: ['tech', 'technician', 'technicianname'], status: ['currentstatus', 'status'], advisor: ['advisor', 'serviceadvisor'], };
+                
+                const myKaarmaMap = new Map();
+                myKaarmaData.forEach(row => {
+                    const roValue = findValue(row, mkKeyAliases.ro);
+                    const cleanRoNum = roValue ? String(roValue).replace(/[^0-9]/g, '') : null;
+                    if (cleanRoNum) myKaarmaMap.set(cleanRoNum, row);
+                });
+                
+                const sdlMap = new Map();
+                sdlData.forEach(row => {
+                    const roValue = findValue(row, sdlKeyAliases.ro);
+                    const cleanRoNum = roValue ? String(roValue).replace(/[^0-9]/g, '') : null;
+                    if (cleanRoNum) sdlMap.set(cleanRoNum, row);
+                });
+
+                const allAssignedRos = new Set(myKaarmaMap.keys());
+                
+                const allUnassignedSdlRows = sdlData.filter(sdlRow => {
+                    const statusCode = (findValue(sdlRow, sdlKeyAliases.statusCodeDesc) || '').toLowerCase();
+                    const roValue = findValue(sdlRow, sdlKeyAliases.ro);
+                    const cleanRoNum = roValue ? String(roValue).replace(/[^0-9]/g, '') : null;
+                    return statusCode.includes('opened') && !allAssignedRos.has(cleanRoNum);
+                });
+
+                const hiddenUnassignedCount = allUnassignedSdlRows.filter(sdlRow => hiddenUnassigned.has(findValue(sdlRow, sdlKeyAliases.ro))).length;
+
+                const unassignedJobs = allUnassignedSdlRows
+                    .filter(sdlRow => showHiddenUnassigned || !hiddenUnassigned.has(findValue(sdlRow, sdlKeyAliases.ro)))
+                    .map(sdlRow => {
+                        const originalServiceRequest = findValue(sdlRow, sdlKeyAliases.description);
+                        return { roNumber: findValue(sdlRow, sdlKeyAliases.ro), customerName: findValue(sdlRow, sdlKeyAliases.customer) || 'N/A', vehicle: findValue(sdlRow, sdlKeyAliases.vehicle) || 'N/A', serviceRequest: createLocalSummary(originalServiceRequest), originalServiceRequest: originalServiceRequest, daysOpen: findValue(sdlRow, sdlKeyAliases.days), soldHours: findValue(sdlRow, sdlKeyAliases.soldhours), tag: findValue(sdlRow, sdlKeyAliases.tag) };
+                    });
+
+                let jobsByTech = {};
+                let needsRedispatchJobs = [];
+                let roadTestJobs = [];
+                
+                myKaarmaMap.forEach((mkRow, cleanRoNum) => {
+                    const status = findValue(mkRow, mkKeyAliases.status) || '';
+                    const lowerStatus = status.toLowerCase().trim();
+
+                    if (lowerStatus === 'complete in shop' || lowerStatus === 'no inspection needed') return;
+
+                    const sdlInfo = sdlMap.get(cleanRoNum) || {};
+                    const originalServiceRequest = findValue(sdlInfo, sdlKeyAliases.description);
+                    
+                    const jobData = { roNumber: findValue(mkRow, mkKeyAliases.ro), status, advisor: findValue(mkRow, mkKeyAliases.advisor) || 'N/A', tag: findValue(sdlInfo, sdlKeyAliases.tag), customerName: findValue(sdlInfo, sdlKeyAliases.customer) || 'N/A from SDL', vehicle: findValue(sdlInfo, sdlKeyAliases.vehicle) || 'N/A from SDL', daysOpen: findValue(sdlInfo, sdlKeyAliases.days), serviceRequest: createLocalSummary(originalServiceRequest), originalServiceRequest: originalServiceRequest, soldHours: findValue(sdlInfo, sdlKeyAliases.soldhours) };
+
+                    if (lowerStatus === 'redispatch needed') {
+                        needsRedispatchJobs.push(jobData);
+                    } else {
+                        const techName = findValue(mkRow, mkKeyAliases.tech) || 'Unassigned';
+                        const tech = techName.trim();
+                        if (!jobsByTech[tech]) jobsByTech[tech] = [];
+                        jobsByTech[tech].push(jobData);
+                        
+                        if(lowerStatus === 'extended road test needed') {
+                            roadTestJobs.push(jobData);
+                        }
+                    }
+                });
+
+                 if (statusFilter !== 'All') {
+                    for (const tech in jobsByTech) {
+                        jobsByTech[tech] = jobsByTech[tech].filter(job => {
+                            const jobStatus = (job.status || '').toLowerCase();
+                            if (statusFilter === 'Ready') return jobStatus.includes('ready for technician - parts here');
+                            if (statusFilter === 'Hold') return jobStatus.includes('hold');
+                            return true;
+                        });
+                    }
+                }
+
+                let totalsByTech = {};
+                for (const tech in jobsByTech) {
+                    totalsByTech[tech] = jobsByTech[tech].reduce((sum, job) => {
+                        const status = (job.status || '').toLowerCase().trim();
+                        if (status === 'hold - parts on order' || status === 'extended road test needed') return sum;
+                        const hours = parseFloat(job.soldHours);
+                        return sum + (isNaN(hours) ? 0 : hours);
+                    }, 0);
+                }
+                
+                const unassignedTotalHours = unassignedJobs.reduce((sum, job) => sum + (parseFloat(job.soldHours) || 0), 0);
+                const redispatchTotalHours = needsRedispatchJobs.reduce((sum, job) => sum + (parseFloat(job.soldHours) || 0), 0);
+                const roadTestTotalHours = roadTestJobs.reduce((sum, job) => sum + (parseFloat(job.soldHours) || 0), 0);
+                const globalRoCount = unassignedJobs.length + needsRedispatchJobs.length + Object.values(jobsByTech).flat().length;
+                const globalTotalSoldHours = unassignedTotalHours + redispatchTotalHours + roadTestTotalHours + Object.values(totalsByTech).reduce((a, b) => a + b, 0);
+
+                const sortedTechNames = Object.keys(jobsByTech).sort((a, b) => {
+                    if (a === 'Unassigned') return 1;
+                    if (b === 'Unassigned') return -1;
+                    return a.localeCompare(b);
+                });
+                const sortedJobsByTech = sortedTechNames.reduce((acc, name) => { acc[name] = jobsByTech[name]; return acc; }, {});
+                return { jobsByTech: sortedJobsByTech, totalsByTech, unassignedJobs, needsRedispatchJobs, roadTestJobs, unassignedTotalHours, redispatchTotalHours, roadTestTotalHours, globalRoCount, globalTotalSoldHours, hiddenUnassignedCount };
+            }, [myKaarmaData, sdlData, hiddenUnassigned, statusFilter, showHiddenUnassigned]);
+
+            const filteredAndSortedTechs = useMemo(() => {
+                const { jobsByTech, totalsByTech } = processedData;
+                let techEntries = Object.entries(jobsByTech);
+
+                if(teamFilter !== 'All') {
+                    const diagnosticTechs = new Set(TEAMS.DIAGNOSTIC);
+                    const premierExpressTechs = new Set(TEAMS.PREMIER_EXPRESS);
+                    const vansTechs = new Set(TEAMS.VANS);
+                    
+                    if(teamFilter === 'Diagnostic Team') techEntries = techEntries.filter(([techName]) => diagnosticTechs.has(techName));
+                    else if(teamFilter === 'Premier Express') techEntries = techEntries.filter(([techName]) => premierExpressTechs.has(techName));
+                    else if(teamFilter === 'Vans Team') techEntries = techEntries.filter(([techName]) => vansTechs.has(techName));
+                    else if(teamFilter === 'Passenger Car') {
+                        const passengerCarExclusion = new Set([...TEAMS.DIAGNOSTIC, ...TEAMS.VANS]);
+                        techEntries = techEntries.filter(([techName]) => !passengerCarExclusion.has(techName));
+                    }
+                }
+
+                if (techSortOrder === 'hoursAsc') {
+                    techEntries.sort(([aTechName], [bTechName]) => (processedData.totalsByTech[aTechName] || 0) - (processedData.totalsByTech[bTechName] || 0));
+                } else if (techSortOrder === 'hoursDesc') {
+                     techEntries.sort(([aTechName], [bTechName]) => (processedData.totalsByTech[bTechName] || 0) - (processedData.totalsByTech[aTechName] || 0));
+                } else {
+                     techEntries.sort(([aTechName], [bTechName]) => {
+                        if (aTechName === 'Unassigned') return 1;
+                        if (bTechName === 'Unassigned') return -1;
+                        return aTechName.localeCompare(bTechName);
+                    });
+                }
+                
+                return techEntries;
+
+            }, [processedData, teamFilter, techSortOrder]);
+
+
+            return (
+                <div className="min-h-screen bg-gray-100">
+                    <header className="bg-white shadow-md sticky top-0 z-10 p-4">
+                        <div className="container mx-auto">
+                            <div className="flex flex-wrap justify-between items-center gap-2">
+                                <div className="flex items-center">
+                                     <svg className="h-10 w-10 mr-3 text-black" viewBox="0 0 320 287" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M319.229 167.333L293.458 127.333H228.917L213.75 167.333H319.229ZM211.083 181.333H290.792L305.958 221.333H195.917L211.083 181.333ZM183.021 235.333H293.042L308.208 275.333H167.854L183.021 235.333ZM103.208 11.3333L118.375 51.3333H24.3958L39.5625 11.3333H103.208ZM22.0208 65.3333H133.542L148.708 105.333H7.4375L22.0208 65.3333ZM163.875 119.333H19.6875L0 167.333H179.042L163.875 119.333Z" fill="currentColor"/></svg>
+                                    <h1 className="text-2xl font-bold text-gray-800">Service Dispatch Dashboard</h1>
+                                    <div className="flex items-center space-x-2 ml-4">
+                                        <span className="text-sm font-semibold bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Total ROs: {processedData.globalRoCount || 0}</span>
+                                        <span className="text-sm font-semibold bg-green-100 text-green-800 px-2 py-1 rounded-full">Total Sold Hrs: {(processedData.globalTotalSoldHours || 0).toFixed(1)}</span>
+                                    </div>
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                  <div className="text-sm text-gray-500">
+                                      {lastUpdated && `Last Updated: ${lastUpdated}`}
+                                  </div>
+                                   <button onClick={() => setIsFilterVisible(!isFilterVisible)} className="text-sm text-blue-600 hover:text-blue-800 font-semibold">
+                                    {isFilterVisible ? 'Hide' : 'Show'} Filters
+                                  </button>
+                                  <button onClick={() => setIsUploaderVisible(!isUploaderVisible)} className="text-sm text-blue-600 hover:text-blue-800 font-semibold">
+                                    {isUploaderVisible ? 'Hide' : 'Show'} Uploads
+                                  </button>
+                                </div>
+                            </div>
+                           {isUploaderVisible && (
+                             <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <FileUploader title="myKaarma Report (Primary)" onFileLoad={handleMyKaarmaLoad} iconClass="fas fa-car" accept=".csv" />
+                                <FileUploader title="CDK SDL Report (Cross-Ref)" onFileLoad={handleSdlLoad} iconClass="fas fa-file-excel" accept=".csv, .xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                             </div>
+                           )}
+                           {isFilterVisible && (
+                             <div className="mt-4 space-y-2">
+                                 <div className="p-2 bg-gray-100 rounded-lg flex flex-wrap items-center gap-2">
+                                     <span className="text-sm font-semibold mr-2">Filter by Team:</span>
+                                     {['All', 'Diagnostic Team', 'Premier Express', 'Vans Team', 'Passenger Car'].map(team => (
+                                         <button 
+                                             key={team}
+                                             onClick={() => setTeamFilter(team)}
+                                             className={`px-3 py-1 text-sm rounded-full ${teamFilter === team ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-200'}`}
+                                         >{team}</button>
+                                     ))}
+                                 </div>
+                                <div className="p-2 bg-gray-100 rounded-lg flex flex-wrap items-center gap-2">
+                                     <span className="text-sm font-semibold mr-2">Filter by Status:</span>
+                                     {['All', 'Ready', 'Hold'].map(status => (
+                                         <button 
+                                             key={status}
+                                             onClick={() => setStatusFilter(status)}
+                                             className={`px-3 py-1 text-sm rounded-full ${statusFilter === status ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-200'}`}
+                                         >{status}</button>
+                                     ))}
+                                 </div>
+                                 <div className="p-2 bg-gray-100 rounded-lg flex flex-wrap items-center gap-2">
+                                     <span className="text-sm font-semibold mr-2">Sort Technicians:</span>
+                                     <button onClick={() => setTechSortOrder('default')} className={`px-3 py-1 text-sm rounded-full ${techSortOrder === 'default' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-200'}`}>Default</button>
+                                     <button onClick={() => setTechSortOrder('hoursAsc')} className={`px-3 py-1 text-sm rounded-full ${techSortOrder === 'hoursAsc' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-200'}`}>Hours 🔺</button>
+                                     <button onClick={() => setTechSortOrder('hoursDesc')} className={`px-3 py-1 text-sm rounded-full ${techSortOrder === 'hoursDesc' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-200'}`}>Hours 🔻</button>
+                                 </div>
+                             </div>
+                           )}
+                        </div>
+                    </header>
+                    
+                    <main>
+                       <QueueSection 
+                           title="Unassigned ROs (Needs Dispatch)" 
+                           jobs={processedData.unassignedJobs} 
+                           onHide={hideUnassignedRo} 
+                           onTogglePriority={togglePriority}
+                           priorityRos={priorityRos}
+                           bgColor="bg-red-100 hover:bg-red-200"
+                           textColor="text-red-800"
+                           borderColor="border-red-500"
+                           totalHours={processedData.unassignedTotalHours}
+                           hiddenCount={processedData.hiddenUnassignedCount}
+                           isShowingHidden={showHiddenUnassigned}
+                           onToggleShowHidden={() => setShowHiddenUnassigned(!showHiddenUnassigned)}
+                        />
+                        <QueueSection 
+                           title="Redispatch Needed" 
+                           jobs={processedData.needsRedispatchJobs} 
+                           onHide={null} 
+                           onTogglePriority={togglePriority}
+                           priorityRos={priorityRos}
+                           bgColor="bg-yellow-100 hover:bg-yellow-200"
+                           textColor="text-yellow-800"
+                           borderColor="border-yellow-500"
+                           totalHours={processedData.redispatchTotalHours}
+                        />
+                        <QueueSection 
+                           title="Extended Road Test Needed" 
+                           jobs={processedData.roadTestJobs} 
+                           onHide={null} 
+                           onTogglePriority={togglePriority}
+                           priorityRos={priorityRos}
+                           bgColor="bg-indigo-100 hover:bg-indigo-200"
+                           textColor="text-indigo-800"
+                           borderColor="border-indigo-500"
+                           totalHours={processedData.roadTestTotalHours}
+                        />
+                       {filteredAndSortedTechs.length > 0 ? (
+                           <div className="flex flex-wrap p-2">
+                                {filteredAndSortedTechs.map(([tech, jobs]) => (
+                                    <TechnicianColumn 
+                                        key={tech} 
+                                        techName={tech} 
+                                        jobs={jobs} 
+                                        totalHours={processedData.totalsByTech[tech]}
+                                        priorityRos={priorityRos}
+                                        onTogglePriority={togglePriority}
+                                    />
+                                ))}
+                           </div>
+                       ) : (
+                           <div className="text-center py-10 px-4">
+                               <i className="fas fa-car-wrench text-6xl text-gray-400 mb-4"></i>
+                               <h2 className="text-2xl font-semibold text-gray-700">Technician Data</h2>
+                               <p className="text-gray-500 mt-2">Upload reports to see assigned jobs or clear active filter.</p>
+                           </div>
+                       )}
+                    </main>
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
